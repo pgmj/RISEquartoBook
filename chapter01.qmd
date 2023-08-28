@@ -1,0 +1,122 @@
+---
+title: "Sample chapter"
+title-block-banner: "#009ca6"
+title-block-banner-color: "#FFFFFF"
+format:
+  html:
+    fig-width: 9
+    fig-height: 6
+    fig-dpi: 150
+execute:
+  echo: true
+  warning: false
+  message: false
+  cache: false
+editor_options: 
+  chunk_output_type: console
+---
+
+## Setting up
+
+First let's load the necessary libraries. Some additional libraries may be loaded as we go along.
+
+```{r}
+library(tidyverse)
+library(foreign)
+library(readxl)
+library(showtext)
+
+### some commands exist in multiple packages, here we define preferred ones that are frequently used
+select <- dplyr::select
+count <- dplyr::count
+recode <- car::recode
+rename <- dplyr::rename
+```
+
+### Theming
+
+Then our fonts, colors, and the ggplot theme.
+
+```{r}
+## Loading Google fonts (https://fonts.google.com/)
+#font_add_google("Noto Sans", "noto")
+## Flama font with regular and italic font faces
+# font_add(family = "flama", 
+#          regular = "fonts/Flama-Font/Flama Regular.otf", 
+#          italic = "fonts/Flama-Font/Flama Italic.otf",
+#          bold = "fonts/Flama-Font/FlamaBlack Regular.otf")
+## Automatically use showtext to render text
+#showtext_auto()
+
+prevent_green <- "#008332"
+prevent_light_green <- "#76A100"
+prevent_dark_blue <- "#003E6E"
+prevent_blue <- "#005F89"
+prevent_light_blue <- "#4398BA"
+prevent_yellow <- "#FBB900"
+prevent_red <- "#BE5014"
+prevent_gray_red <- "#6C5861"
+prevent_light_gray <- "#F0F0F0"
+prevent_gray <- "#d3d3d3"
+prevent_dark_gray <- "#3B3B3B"
+prevent_turquoise <- "#009a9d"
+prevent_green_comp <- "#D9ECE0"
+prevent_light_green_comp <- "#DCE7BF"
+prevent_dark_blue_comp <- "#BFCEDA"
+prevent_blue_comp <- "#BFD7E1"
+prevent_light_blue_comp <- "#D0E5EE"
+prevent_yellow_comp <- "#FEEDBF"
+prevent_red_comp <- "#EFD3C4"
+prevent_green_contrast <- "#006632"
+prevent_blue_contrast <- "#003E6E"
+prevent_yellow_contrast <- "#FBD128"
+prevent_red_contrast <- "#B01200"
+prevent_gray_red_contrast <- "#68534E"
+
+# manual palette creation, 7 colors
+PREVENTpalette1 <- c("#6C5861", "#005F89", "#4398BA", "#76A100", "#008332", "#FBB900", "#FBD128")
+
+# create palette with 12 colors based on Prevent colors above
+PREVENTpalette2 <- colorRampPalette(colors = c("#6C5861", "#005F89", "#4398BA", "#76A100", "#008332", "#FBB900", "#FBD128"))(12)
+
+theme_prevent <- function(fontfamily = "flama", axisTitleSize = 13, titlesize = 15,
+                          margins = 12, axisface = "plain", stripsize = 12,
+                          panelDist = 0.6, legendSize = 9, legendTsize = 10,
+                          axisTextSize = 10, ...) {
+  theme(
+    text = element_text(family = fontfamily),
+    axis.title.x = element_text(
+      margin = margin(t = margins),
+      size = axisTitleSize
+    ),
+    axis.title.y = element_text(
+      margin = margin(r = margins),
+      size = axisTitleSize
+    ),
+    plot.title = element_text(
+      #family = "flama",
+      face = "bold",
+      size = titlesize
+    ),
+    axis.title = element_text(
+      face = axisface
+    ),
+    axis.text = element_text(size = axisTextSize),
+    plot.caption = element_text(
+      face = "italic"
+    ),
+    legend.text = element_text(family = fontfamily, size = legendSize),
+    legend.title = element_text(family = fontfamily, size = legendTsize),
+    strip.text = element_text(size = stripsize),
+    panel.spacing = unit(panelDist, "cm", data = NULL),
+    legend.background = element_rect(color = "lightgrey"),
+    ...
+  )
+}
+
+# these rows are for specific geoms, such as geom_text() and geom_text_repel(), to match font family. Add as needed
+#    update_geom_defaults("text", list(family = fontfamily)) +
+#    update_geom_defaults("text_repel", list(family = fontfamily)) +
+#    update_geom_defaults("textpath", list(family = fontfamily)) +
+#    update_geom_defaults("texthline", list(family = fontfamily))
+```

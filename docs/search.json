@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "index.html#bakgrund",
+    "href": "index.html#bakgrund",
+    "title": "Template for Quarto books",
+    "section": "Bakgrund",
+    "text": "Bakgrund\nRISE Research Institutes of Sweden har fått i uppdrag att utvärdera och vidareutveckla …"
+  },
+  {
+    "objectID": "index.html#referenser",
+    "href": "index.html#referenser",
+    "title": "Template for Quarto books",
+    "section": "Referenser",
+    "text": "Referenser"
+  },
+  {
+    "objectID": "chapter01.html#setting-up",
+    "href": "chapter01.html#setting-up",
+    "title": "1  Sample chapter",
+    "section": "1.1 Setting up",
+    "text": "1.1 Setting up\nFirst let’s load the necessary libraries. Some additional libraries may be loaded as we go along.\n\n\nCode\nlibrary(tidyverse)\nlibrary(ggdist)\nlibrary(ggpp)\nlibrary(foreign)\nlibrary(readxl)\nlibrary(showtext)\nlibrary(stringr)\nlibrary(patchwork)\nlibrary(glue)\nlibrary(ggridges)\nlibrary(scales)\n\n### some commands exist in multiple packages, here we define preferred ones that are frequently used\nselect <- dplyr::select\ncount <- dplyr::count\nrecode <- car::recode\nrename <- dplyr::rename\n\n\n\n1.1.1 Theming\nThen our fonts, colors, and the ggplot theme.\n\n\nCode\n## Loading Google fonts (https://fonts.google.com/)\n#font_add_google(\"Noto Sans\", \"noto\")\n## Flama font with regular and italic font faces\n# font_add(family = \"flama\", \n#          regular = \"fonts/Flama-Font/Flama Regular.otf\", \n#          italic = \"fonts/Flama-Font/Flama Italic.otf\",\n#          bold = \"fonts/Flama-Font/FlamaBlack Regular.otf\")\n## Automatically use showtext to render text\n#showtext_auto()\n\nprevent_green <- \"#008332\"\nprevent_light_green <- \"#76A100\"\nprevent_dark_blue <- \"#003E6E\"\nprevent_blue <- \"#005F89\"\nprevent_light_blue <- \"#4398BA\"\nprevent_yellow <- \"#FBB900\"\nprevent_red <- \"#BE5014\"\nprevent_gray_red <- \"#6C5861\"\nprevent_light_gray <- \"#F0F0F0\"\nprevent_gray <- \"#d3d3d3\"\nprevent_dark_gray <- \"#3B3B3B\"\nprevent_turquoise <- \"#009a9d\"\nprevent_green_comp <- \"#D9ECE0\"\nprevent_light_green_comp <- \"#DCE7BF\"\nprevent_dark_blue_comp <- \"#BFCEDA\"\nprevent_blue_comp <- \"#BFD7E1\"\nprevent_light_blue_comp <- \"#D0E5EE\"\nprevent_yellow_comp <- \"#FEEDBF\"\nprevent_red_comp <- \"#EFD3C4\"\nprevent_green_contrast <- \"#006632\"\nprevent_blue_contrast <- \"#003E6E\"\nprevent_yellow_contrast <- \"#FBD128\"\nprevent_red_contrast <- \"#B01200\"\nprevent_gray_red_contrast <- \"#68534E\"\n\n# manual palette creation, 7 colors\nPREVENTpalette1 <- c(\"#6C5861\", \"#005F89\", \"#4398BA\", \"#76A100\", \"#008332\", \"#FBB900\", \"#FBD128\")\n\n# create palette with 12 colors based on Prevent colors above\nPREVENTpalette2 <- colorRampPalette(colors = c(\"#6C5861\", \"#005F89\", \"#4398BA\", \"#76A100\", \"#008332\", \"#FBB900\", \"#FBD128\"))(12)\n\ntheme_prevent <- function(fontfamily = \"flama\", axisTitleSize = 13, titlesize = 15,\n                          margins = 12, axisface = \"plain\", stripsize = 12,\n                          panelDist = 0.6, legendSize = 9, legendTsize = 10,\n                          axisTextSize = 10, ...) {\n  theme(\n    text = element_text(family = fontfamily),\n    axis.title.x = element_text(\n      margin = margin(t = margins),\n      size = axisTitleSize\n    ),\n    axis.title.y = element_text(\n      margin = margin(r = margins),\n      size = axisTitleSize\n    ),\n    plot.title = element_text(\n      #family = \"flama\",\n      face = \"bold\",\n      size = titlesize\n    ),\n    axis.title = element_text(\n      face = axisface\n    ),\n    axis.text = element_text(size = axisTextSize),\n    plot.caption = element_text(\n      face = \"italic\"\n    ),\n    legend.text = element_text(family = fontfamily, size = legendSize),\n    legend.title = element_text(family = fontfamily, size = legendTsize),\n    strip.text = element_text(size = stripsize),\n    panel.spacing = unit(panelDist, \"cm\", data = NULL),\n    legend.background = element_rect(color = \"lightgrey\"),\n    ...\n  )\n}\n\n# these rows are for specific geoms, such as geom_text() and geom_text_repel(), to match font family. Add as needed\n#    update_geom_defaults(\"text\", list(family = fontfamily)) +\n#    update_geom_defaults(\"text_repel\", list(family = fontfamily)) +\n#    update_geom_defaults(\"textpath\", list(family = fontfamily)) +\n#    update_geom_defaults(\"texthline\", list(family = fontfamily))"
+  }
+]

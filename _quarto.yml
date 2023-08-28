@@ -1,0 +1,50 @@
+project:
+  type: book
+  output-dir: docs
+book:
+  title: "Template for Quarto books"
+  subtitle: "For RISE Research Institutes of Sweden"
+  repo-url: "https://github.com/pgmj/"
+  sidebar:
+    style: floating
+    search: true
+  author:
+    - name: 'Magnus Johansson'
+      affiliation: 'RISE Research Institutes of Sweden'
+      affiliation-url: 'https://ri.se/shic'
+      orcid: '0000-0003-1669-592X'
+    - name: 'Simon Karlsson'
+      orcid: '0000-0002-3817-380X'
+      affiliation: 'RISE Research Institutes of Sweden'
+      affiliation-url: 'https://www.ri.se/kbm'
+  date: 2023-06-05
+  date-format: iso
+  doi: '10.5281/zenodo.8220620'
+
+  chapters:
+  - index.qmd
+  - chapter01.qmd
+
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-tools: false
+    code-fold: true
+    number-sections: true
+    layout-align: left
+    page-layout: full
+    mainfont: 'Lato'
+    monofont: 'Roboto Mono'
+    linestretch: 1.6
+    theme:
+      - materia
+      - custom.scss
+    css: styles.css
+    link-external-newwindow: true
+    fig-dpi: 96
+    crossref-sec-prefix: "Sektion"
+    toc-title: "Innehållsförteckning"
+    crossref-fig-title: "Figur"
+    crossref-tbl-title: "Tabell"
+    callout-note-title: "Beskrivning"
